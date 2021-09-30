@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>My App</title>
+  </head>
+  <body>
+    <script src="./mithril.js"></script>
+    <script>
+      const root = document.body
+      let count = 0
+
+      const Splash = {
+        view: function () {
+          return m("a", { href: "#!/hello" }, "Enter!");
+        },
+      }
+
+      const Hello = {
+        view: function () {
+          return m("main", [
+            m("h1", { class: "title" }, "My first app"),
+            m(
+              "button",
+              {
+                onclick: function () {
+                  count++;
+                },
+              },
+              count + " clicks"
+            ),
+          ])
+        },
+      }
+
+      // m.render(root, m("h1", "My first app"))
+      // m.mount(root, Hello)
+
+      m.route(root, "/splash", { "/splash": Splash, "/hello": Hello })
+
+      // Taken directly from mithril.js.org, demonstrates a basic XHR request:
+
+     // var count = 0
+      // var increment = function() {
+        // m.request({
+        // method: "PUT",
+        // url: "//rem-rest-api.herokuapp.com/api/tutorial/1",
+        // body: {count: count + 1},
+        // withCredentials: true,
+      // })
+      // .then(function(data) {
+        // count = parseInt(data.count)
+      // })
+      // }
+
+      // var Hello = {
+        // view: function() {
+        // return m("main", [
+            // m("h1", {class: "title"}, "My first app"),
+            // m("button", {onclick: increment}, count + " clicks"),
+        // ])
+        // }
+      // }
+
+    </script>
+  </body>
+</html>
